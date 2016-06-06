@@ -1,0 +1,5 @@
+.DS_Store
+.gitignore
+.eslintrc
+application/config/conf_set.php
+node_modules

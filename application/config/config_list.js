@@ -1,4 +1,4 @@
 module.exports = {
-  'config': 'config',
-  'datebase': 'datebase'
+  'base': 'config',
+  'api': 'api',
 };

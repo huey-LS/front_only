@@ -1,16 +1,20 @@
 module.exports = {
   entry: {
-    view1: "./src/js/home.js"
+    'js/go': './src/js/go.js',
+    'js/main': './src/js/main.js'
   },
   output: {
-    path: __dirname,
-    filename: "[name].entry.js"
+    filename: '[name].entry.js'
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     loaders: [
       {
-        test: /\.css$/, 
-        loader: "style!css"
+        test: /\.css$/,
+        loader: 'style!css'
       }, {
         test: /\.jsx$/,
         loader: 'babel-loader!jsx-loader?harmony'

@@ -20,7 +20,7 @@ var assetUrl = '/assets/';
 var HTMLRender = function(file, data){
   var data = data || {};
   if(data.entry){
-    var entryFile = path.join(viewPath, data.entry);
+    var entryFile = path.join(viewPath, data.entry + '.entry.js');
     try {
       var entryScript = fs.readFileSync(entryFile);
       var html = `
@@ -29,7 +29,7 @@ var HTMLRender = function(file, data){
             <title>${data.title ? data.title : ''}</title>
           </head>
           <body>
-            ${entryScript ? '<script>' + entryScript + '</script>' : ''}
+            <script>${entryScript}</script>
           </body>
         </html>
       `;

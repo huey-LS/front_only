@@ -1,23 +1,24 @@
 var gulp = require('gulp');
 var webpack = require('webpack-stream');
 
-var babel = require('babel-core');
+var babel = require('gulp-babel');
 require('babel-preset-react');
-
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 gulp.task('jsx', function(){
   return gulp.src('./src/jsx/*.jsx')
-  .pipe(function(file, enc, cb){
-    var res = babel.transform(file.contents.toString(), {
-      presets: ['react', 'es2015']
-    }, {
-      filename: file.path,
-      fllenameRelatvie: file.relatvie
-    });
+    .pipe(babel({
+      presets: ['es2015', 'react']
+    }))
+    .pipe(gulp.dest('dist'));
+});
 
-    return res;
-  })
-  .pipe(gulp.dest('dist/'));
+gulp.task('minifyjs', function(){
+  return gulp.src('./dist/*.js')
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', function() {

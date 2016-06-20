@@ -2,12 +2,13 @@ require('../css/base.css');
 
 var React = require('react');
 var ReactDom = require('react-dom');
-var home = require('../jsx/home.jsx');
+var loading = require('../jsx/loading.jsx');
 
 
-var page = React.createElement(home, null);
-ReactDom.render(
-  page,
+var preLoadElement = React.createElement(loading, {loading: 1});
+var preLoad = ReactDom.render(
+  preLoadElement,
   document.body
 );
-window.page = page;
+window.preLoad = preLoad;
+window.preLoadElement = preLoadElement;

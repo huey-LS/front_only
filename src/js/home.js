@@ -1,11 +1,12 @@
 var React = require('react');
 var ReactDom = require('react-dom');
-var home = require('../jsx/home.jsx');
+var goView = require('../jsx/go.jsx');
 
-
-var page = React.createElement(home, null);
-ReactDom.render(
-  page,
-  document.body
-);
-window.page = page;
+setTimeout(function(){
+    preLoad && preLoad.destroy && preLoad.destroy();
+    ReactDom.render(
+      React.createElement(goView, {loading: 'success'}),
+      document.body
+    );
+}, 3000);
+console.log('加载成功，3秒后移除loading');

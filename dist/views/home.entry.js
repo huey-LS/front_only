@@ -44,38 +44,53 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
+	__webpack_require__(4);
 
-	var React = __webpack_require__(5);
-	var ReactDom = __webpack_require__(6);
-	var home = __webpack_require__(7);
+	var React = __webpack_require__(1);
+	var ReactDom = __webpack_require__(2);
+	var loading = __webpack_require__(8);
 
 
-	var page = React.createElement(home, null);
-	ReactDom.render(
-	  page,
+	var preLoadElement = React.createElement(loading, {loading: 1});
+	var preLoad = ReactDom.render(
+	  preLoadElement,
 	  document.body
 	);
-	window.page = page;
+	window.preLoad = preLoad;
+	window.preLoadElement = preLoadElement;
+
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	module.exports = React;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = ReactDOM;
+
+/***/ },
+/* 3 */,
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(2);
+	var content = __webpack_require__(5);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(7)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./base.css", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./base.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./base.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./base.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -85,10 +100,10 @@
 	}
 
 /***/ },
-/* 2 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(3)();
+	exports = module.exports = __webpack_require__(6)();
 	// imports
 
 
@@ -99,7 +114,7 @@
 
 
 /***/ },
-/* 3 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/*
@@ -155,7 +170,7 @@
 
 
 /***/ },
-/* 4 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -407,30 +422,24 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	module.exports = react;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	module.exports = window["react-dom"];
-
-/***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(5);
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(2);
 
-	var Home = React.createClass({ displayName: "Home",
+	var Loading = React.createClass({ displayName: "Loading",
+	  destroy: function () {
+	    var element = ReactDOM.findDOMNode(this);
+	    element.parentNode.removeChild(element);
+	    console.log('loading 移除');
+	  },
 	  render: function () {
-	    return React.createElement("div", null, React.createElement("h1", null, this.props.site, ":"), React.createElement("p", null, "welcome"));
+	    return React.createElement("div", null, "loading");
 	  }
 	});
 
-	module.exports = Home;
+	module.exports = Loading;
 
 /***/ }
 /******/ ]);

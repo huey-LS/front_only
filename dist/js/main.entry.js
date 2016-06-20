@@ -44,27 +44,30 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1)
+	__webpack_require__(4)
 	console.log('go');
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(2);
+	var content = __webpack_require__(5);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(7)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./base.css", function() {
-				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./base.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./base.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./base.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -74,10 +77,10 @@
 	}
 
 /***/ },
-/* 2 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(3)();
+	exports = module.exports = __webpack_require__(6)();
 	// imports
 
 
@@ -88,7 +91,7 @@
 
 
 /***/ },
-/* 3 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/*
@@ -144,7 +147,7 @@
 
 
 /***/ },
-/* 4 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

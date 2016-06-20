@@ -1,21 +1,20 @@
 module.exports = {
   entry: {
     'views/home': './src/views/home.js',
-    'js/main': './src/js/main.js',
-    'lib/react': './src/lib/react.js',
-    'lib/react-dom': './src/lib/react-dom.js'
+    'js/home': './src/js/home.js',
+    'js/main': './src/js/main.js'
   },
   output: {
     filename: '[name].entry.js'
   },
   externals: {
-    react: 'react',
-    'react-dom': 'window[\'react-dom\']'
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     loaders: [
       {
-        test: /\.css$/, 
+        test: /\.css$/,
         loader: 'style!css'
       }, {
         test: /\.jsx$/,

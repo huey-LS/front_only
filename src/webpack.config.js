@@ -1,7 +1,6 @@
 module.exports = {
   entry: {
-    'views/home': './src/views/home.js',
-    'js/home': './src/js/home.js',
+    'js/go': './src/js/go.js',
     'js/main': './src/js/main.js'
   },
   output: {

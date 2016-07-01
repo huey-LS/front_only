@@ -6,7 +6,7 @@ home
     this.render('home', {site: 'gifty', title: 'gifty'});
   })
   .get('/go', function *(next) {
-    this.scriptRender('preload', {preload: 'home', entry: 'home', title: 'gifty-go'});
+    this.render('preload', {entry: 'go', title: 'gifty-go'});
   });
 
 module.exports = home;

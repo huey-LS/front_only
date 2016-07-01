@@ -21,16 +21,18 @@ class Config {
     return configs;
   }
   constructor() {
-    this.configs = {};
+    this._configs = {};
     for(let key in this.config_list) {
       let config = require(this.config_path + '/' + this.config_list[key]);
       let [...conf_set] = ['default', ...this.conf_set];
       let [...configs] = [{}, ...conf_set.map(val => config[val])];
-      this.configs[key] = Object.assign.apply(Object, configs);
+      this._configs[key] = Object.assign.apply(Object, configs);
+
+      this.__defineGetter__(key, () => this._configs[key]);
     }
   }
   get(name) {
-    return this.configs[name];
+    return this._configs[name];
   }
 }
 

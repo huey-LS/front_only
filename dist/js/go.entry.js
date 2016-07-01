@@ -49,10 +49,9 @@
 	var goView = __webpack_require__(3);
 
 	setTimeout(function(){
-	    preLoad && preLoad.destroy && preLoad.destroy();
 	    ReactDom.render(
-	      React.createElement(goView, {loading: 'success'}),
-	      document.body
+	      React.createElement(goView),
+	      document.getElementById('root')
 	    );
 	}, 3000);
 	console.log('加载成功，3秒后移除loading');
